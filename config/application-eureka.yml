@@ -1,12 +1,6 @@
 server:
   port: 19090
 
-spring:
-  application:
-    name: eureka
-  config:
-    import: "optional:configserver:"
-
 eureka:
   client:
     register-with-eureka: false
