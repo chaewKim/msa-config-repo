@@ -1,0 +1,19 @@
+server:
+  port: 19092
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/order_db
+    username: admin
+    password: adminpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000

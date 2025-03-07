@@ -1,0 +1,20 @@
+server:
+  port: 19093
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/product_db
+    username: admin
+    password: adminpass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+spring:
+  cache:
+    type: redis
+  redis:
+    host: redis
+    port: 6379
+    password: systempass

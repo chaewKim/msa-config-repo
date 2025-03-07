@@ -1,0 +1,19 @@
+server:
+  port: 19091
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+        - id: product-service
+          uri: lb://product
+          predicates:
+            - Path=/products/**
+        - id: order-service
+          uri: lb://order
+          predicates:
+            - Path=/orders/**
