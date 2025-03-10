@@ -1,0 +1,14 @@
+server:
+  port: 0  # ✅ 동적 포트 할당 (Eureka에서 자동으로 포트 할당)
+
+spring:
+  application:
+    name: product  # ✅ Eureka에 등록될 서비스명
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka:19090/eureka/
+  instance:
+    instance-id: ${spring.application.name}:${server.port}  # ✅ 개별 인스턴스로 Eureka에 등록
+    prefer-ip-address: true  # ✅ IP 기반으로 Eureka에 등록
