@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: gateway-server  # ✅ 서비스 이름
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
       discovery:
