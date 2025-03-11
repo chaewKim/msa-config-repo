@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway  # ✅ 서비스 이름
+    name: gateway-server  # ✅ 서비스 이름
   cloud:
     gateway:
       discovery:
