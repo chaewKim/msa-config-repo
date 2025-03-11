@@ -7,7 +7,7 @@ spring:
 
 eureka:
   instance:
-    hostname: local  # 컨테이너 내에서 접근할 수 있도록 설정
+    hostname: localhost  # 컨테이너 내에서 접근할 수 있도록 설정
   client:
     register-with-eureka: false  # 자체적으로 Eureka에 등록하지 않음
     fetch-registry: false  # 레지스트리를 가져오지 않음
