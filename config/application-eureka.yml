@@ -1,18 +1,16 @@
 server:
-  port: 19090
+  port: 19090  # Eureka 서버 포트
 
 spring:
   application:
-    name: eureka
+    name: eureka-server  # Eureka 서버 애플리케이션 이름
 
 eureka:
   instance:
-    hostname: eureka
+    hostname: eureka  # 컨테이너 내에서 접근할 수 있도록 설정
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://eureka:19090/eureka/
+    register-with-eureka: false  # 자체적으로 Eureka에 등록하지 않음
+    fetch-registry: false  # 레지스트리를 가져오지 않음
   server:
-    enable-self-preservation: false
-    eviction-interval-timer-in-ms: 5000
+    enable-self-preservation: false  # 테스트 환경에서 빠르게 반영되도록 설정
+    eviction-interval-timer-in-ms: 5000  # 인스턴스 제거 간격 (5초)
