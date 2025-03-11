@@ -12,6 +12,19 @@ spring:
         locator:
           enabled: true  # ✅ Eureka 기반 자동 라우팅 활성화
           lower-case-service-id: true  # ✅ 서비스 ID 소문자로 변환
+      routes:
+        - id: product-service
+          uri: lb://product-service  # ✅ Eureka에서 'product-service'로 등록된 서비스로 요청을 전달
+          predicates:
+            - Path=/product/**
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
 
 eureka:
   instance:
