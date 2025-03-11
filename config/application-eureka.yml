@@ -1,13 +1,17 @@
 server:
-  port: 19090
+  port: 19090  # ✅ Eureka 서버의 포트
 
 spring:
   application:
-    name: eureka-server  # Eureka 서버 애플리케이션 이름
+    name: eureka-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: default
 
 eureka:
   instance:
-    hostname: localhost  # 컨테이너 내에서 접근할 수 있도록 설정
+    hostname: localhost
   client:
-    register-with-eureka: false  # 자체적으로 Eureka에 등록하지 않음
-    fetch-registry: false  # 레지스트리를 가져오지 않음
+    registerWithEureka: false
+    fetchRegistry: false

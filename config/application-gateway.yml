@@ -1,17 +1,36 @@
 server:
-  port: 19091
+  port: 19091  # ✅ Gateway의 포트 (Config Server가 설정값을 올바르게 주는지 확인!)
 
 spring:
   application:
-    name: gateway
+    name: gateway  # ✅ 서비스 이름 (Eureka 등록용)
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: true
-          lower-case-service-id: true
+          enabled: true  # ✅ Eureka 기반 자동 라우팅 활성화
+          lower-case-service-id: true  # ✅ 서비스 ID를 소문자로 변환
+      routes:
+        - id: product-service
+          uri: lb://product-service  # ✅ Eureka에서 `product-service`를 찾음
+          predicates:
+            - Path=/products/**  # ✅ "/products/**" 경로로 들어온 요청을 product-service로 라우팅
+
+        - id: auth-service
+          uri: lb://auth-service  # ✅ Eureka에서 `auth-service`를 찾음
+          predicates:
+            - Path=/auth/**  # ✅ "/auth/**" 경로로 들어온 요청을 auth-service로 라우팅
+
+        - id: order-service
+          uri: lb://order-service  # ✅ Eureka에서 `order-service`를 찾음
+          predicates:
+            - Path=/orders/**  # ✅ "/orders/**" 경로로 들어온 요청을 order-service로 라우팅
 
 eureka:
+  instance:
+    hostname: localhost
   client:
     service-url:
-      defaultZone: http://eureka:19090/eureka/
+      defaultZone: http://localhost:19090/eureka/  # ✅ Eureka 서버 주소
+    register-with-eureka: true  # ✅ Gateway도 Eureka에 등록됨
+    fetch-registry: true  # ✅ Eureka에서 서비스 목록 가져오기
