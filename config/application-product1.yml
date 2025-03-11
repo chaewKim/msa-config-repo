@@ -1,0 +1,14 @@
+server:
+  port: 19093  # ✅ 첫 번째 인스턴스의 고정 포트
+
+spring:
+  application:
+    name: product-service
+
+eureka:
+  instance:
+    instance-id: product-service-19093  # ✅ 개별 인스턴스 ID
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka/
